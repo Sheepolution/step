@@ -51,8 +51,9 @@ function step:set(t, noreset)
 	self.timer = noreset and self.timer or 0
 end
 
-function step:end()
-	self.timer = time
+function step:finish()
+	self.paused = false
+	self.timer = self.time
 end
 
 return step

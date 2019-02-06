@@ -80,14 +80,13 @@ timer = step.new(5)
 timer:set(3)
 ```
 
+### Finish
 
-### End
-
-You can use `step:end()` to end the timer, meaning that on next first update it will return `true` and reset the timer.
+You can use `step:finish()` to set the timer to the end, meaning that on next first update it will return `true` and reset the timer.
 
 ```lua
 timer = step.new(4.7)
-timer:end()
+timer:finish()
 ```
 
 ```
@@ -95,7 +94,6 @@ if timer(dt) then
     print("On the first frame this will be printed and then again after 4.7 seconds.")    
 end
 ```
-
 
 ## License
 
