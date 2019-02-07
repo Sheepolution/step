@@ -1,6 +1,6 @@
 # step
 
-A small timer module that makes it easier to have action execute in a certain interval or after a delay.
+A small immediate mode timer module that makes it easier to have an action execute with a certain interval or after a delay.
 
 ## Installation
 
@@ -18,40 +18,42 @@ timer = step.new(3)
 
 ## Usage
 
-### Interval
+### Every
 
-Update the timer with `step:update(dt)` or by calling your timer (`timer(dt)`) and pass the delta time as argument. If the timer reaches its set time, it will reset and return true.
+Update the timer with `step:every(dt)` or by calling your timer (`timer(dt)`) and pass the delta time as argument. If the timer reaches its set time, it will reset and return true.
 
 ```lua
-if timer:update(dt) then
+if timer:every(dt) then
     print("This will be printed every 3 seconds.")
 end
 ```
 
-### Delay
+### After
 
-You can pass a second argument to `step.new(time, ret)` to prevent the timer from resetting. The passed argument will be returned after the set time has reached. 
-
-```lua
-timer = step.new(3, true)
-```
+`step:after(dt)` will return true every frame after the timer reaches its set time.
 
 ```lua
-if timer:update(dt) then
+if timer:after(dt) then
     print("After 3 seconds this will be printed every frame.")
 end
 ```
 
-Note that on the first time reaching the timer `true` will always be returned. Only after that will the passed argument returned.
+### Once
+
+`step:once(dt)` will return true on the frame the timer reaches its set time. After that it will return false and the timer needs to be manually [reset](#reset).
 
 ```lua
-timer = step.new(3, false)
+if timer:once(dt) then
+    print("After 3 seconds this will be printed once.")
 ```
 
+### During
+
+`step:during(dt)` will return true on every frame that the timer has not reached its set time. After that it will return false and the timer needs to be manually [reset](#reset).
+
 ```lua
-if timer(dt) then
+if timer:once(dt) then
     print("After 3 seconds this will be printed once.")
-end
 ```
 
 ### Reset
