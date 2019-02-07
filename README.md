@@ -91,7 +91,7 @@ timer = step.new(4.7)
 timer:finish()
 ```
 
-```
+```lua
 if timer(dt) then
     print("On the first frame this will be printed and then again after 4.7 seconds.")    
 end
