@@ -47,7 +47,7 @@ end
 
 ### Once
 
-If you create a new timer with `step.after()` the timer will return true on the frame the timer reaches its set time. After that it will return false and the timer needs to be manually [reset](#reset).
+If you create a new timer with `step.once()` the timer will return true on the frame the timer reaches its set time. After that it will return false and the timer needs to be manually [reset](#reset).
 
 ```lua
 timer = step.once(3)
@@ -68,6 +68,7 @@ timer = step.during(3)
 ```lua
 if timer:update(dt) then
     print("After 3 seconds this will be printed once.")
+end
 ```
 
 ### Reset

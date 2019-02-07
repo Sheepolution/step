@@ -35,10 +35,11 @@ function timer:update(dt)
 	end
 	self.timer = self.timer + dt
 	if self.timer >= self.time then
-		self.timer = self.timer - self.time
+		self.timer = self.timer % self.time
 		self.finished = true
 		if self.range then
 			self.time = rand(self.range)
+			print(self.time)
 		end
 		return self.kind ~= 4
 	end
@@ -68,34 +69,36 @@ function timer:finish()
 	self.timer = self.time
 end
 
-local step = {}
-
-function step.new(t, kind)
-	local range = type(t) == "table" and t or false
-	t = range and rand(range) or t
+local function new(a, b, kind)
+	local range = b and {a, b} or nil
+	a = range and rand(range) or a
 	return setmetatable({
 		range = range,
-		time = t,
+		time = a,
 		timer = 0,
-		kind = kind or 1,
+		kind = kind,
 		finished = false
 		}, timer)
 end
 
-function step.every(t)
-	return step.new(t, 1)
+local step = {}
+
+function step.new(a, b)
+	return new(a, b, 1)
 end
 
-function step.after(t)
-	return step.new(t, 2)
+step.every = step.new
+
+function step.after(a, b)
+	return new(a, b, 2)
 end
 
-function step.once(t)
-	return step.new(t, 3)
+function step.once(a, b)
+	return new(a, b, 3)
 end
 
-function step.during(t)
-	return step.new(t, 4)
+function step.during(a, b)
+	return new(a, b, 4)
 end
 
 return step
