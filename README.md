@@ -56,6 +56,7 @@ timer = step.once(3)
 ```lua
 if timer:update(dt) then
     print("After 3 seconds this will be printed once.")
+end
 ```
 
 ### During
