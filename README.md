@@ -68,7 +68,7 @@ timer = step.during(3)
 
 ```lua
 if timer:update(dt) then
-    print("After 3 seconds this will be printed once.")
+    print("This will be printed every frame until 3 seconds have passed")
 end
 ```
 
