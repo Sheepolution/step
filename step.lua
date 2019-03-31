@@ -39,7 +39,6 @@ function timer:update(dt)
 		self.finished = true
 		if self.range then
 			self.time = rand(self.range)
-			print(self.time)
 		end
 		return self.kind ~= 4
 	end
