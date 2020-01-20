@@ -15,7 +15,7 @@ You can then use `step` to create a new timer.
 
 ### Every
 
-You create a new timer with `step.new(time)` or `step.every(time)`. When updated, the timer will return true with `time` as the interval.
+You create a new timer with `step.new(time)` or `step.every(time)`. When updated, the timer will return `true` with `time` as the interval.
 
 ```lua
 timer = step.every(3)
@@ -33,7 +33,7 @@ end
 
 ### After
 
-If you create a new timer with `step.after()` the timer will return true every frame after the timer reaches its set time.
+If you create a new timer with `step.after()` the timer will return `true` every frame after the timer reaches its set time.
 
 ```lua
 timer = step.after(3)
@@ -47,7 +47,7 @@ end
 
 ### Once
 
-If you create a new timer with `step.once()` the timer will return true on the frame the timer reaches its set time. After that it will return false and the timer needs to be manually [reset](#reset).
+If you create a new timer with `step.once()` the timer will return `true` on the frame the timer reaches its set time. After that it will return false and the timer needs to be manually [reset](#reset).
 
 ```lua
 timer = step.once(3)
@@ -61,7 +61,7 @@ end
 
 ### During
 
-If you create a new timer with `step.during()` the timer will return true on every frame that the timer has not reached its set time. After that it will return false and the timer needs to be manually [reset](#reset).
+If you create a new timer with `step.during()` the timer will return `true` on every frame that the timer has not reached its set time. After that it will return false and the timer needs to be manually [reset](#reset).
 ```lua
 timer = step.during(3)
 ```
@@ -100,7 +100,7 @@ timer:set(3)
 
 ### Finish
 
-You can use `timer:finish()` to set the timer to the end, meaning that on next first update it will return `true` and reset the timer.
+You can use `timer:finish()` to set the timer to the end, meaning that on the next update with `step.every` it will return `true` and reset the timer.
 
 ```lua
 timer = step.new(4.7)
