@@ -83,7 +83,7 @@ timer()
 
 ### Random
 
-If you pass a table with two numbers to `timer.new(t)` it will have a random length (with decimals) between those numbers after each reset.
+If you pass two numbers `timer.new(lowest, highest)` it will have a random length (with decimals) between those numbers after each reset.
 
 ```lua
 timer = step.new({3, 5})
