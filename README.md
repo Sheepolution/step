@@ -113,6 +113,32 @@ if timer(dt) then
 end
 ```
 
+You can use `timer:finish()` to set the timer to the end, meaning that on the next update with `step.every` it will return `true` and reset the timer.
+
+```lua
+timer = step.new(4.7)
+timer:finish()
+```
+
+```lua
+if timer(dt) then
+    print("On the first frame this will be printed and then again after 4.7 seconds.")    
+end
+```
+
+By passing `true` for the parameter `truly`, the timer will have actually ended, meaning that on the next update with `step.once` it will return `false`.
+
+```lua
+timer = step.once(4.7)
+timer:finish(true)
+```
+
+```lua
+if timer(dt) then
+    print("This will never be printed")    
+end
+```
+
 ## License
 
 This library is free software; you can redistribute it and/or modify it under the terms of the MIT license. See [LICENSE](LICENSE) for details.

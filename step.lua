@@ -63,8 +63,8 @@ function timer:set(t, noreset)
 	self.timer = noreset and self.timer or 0
 end
 
-function timer:finish()
-	self.finished = false
+function timer:finish(truly)
+	self.finished = truly
 	self.timer = self.time
 end
 
