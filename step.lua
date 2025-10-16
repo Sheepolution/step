@@ -23,7 +23,7 @@
 --
 
 local function rand(range)
-  return range[1] + math.random() * (range[2] - range[1])
+	return range[1] + math.random() * (range[2] - range[1])
 end
 
 local timer = {}
@@ -60,7 +60,9 @@ end
 
 function timer:set(t, noreset)
 	self.time = t
-	self.timer = noreset and self.timer or 0
+	if not noreset then
+		self:reset()
+	end
 end
 
 function timer:finish(truly)
@@ -69,7 +71,7 @@ function timer:finish(truly)
 end
 
 local function new(a, b, kind)
-	local range = b and {a, b} or nil
+	local range = b and { a, b } or nil
 	a = range and rand(range) or a
 	return setmetatable({
 		range = range,
@@ -77,7 +79,7 @@ local function new(a, b, kind)
 		timer = 0,
 		kind = kind,
 		finished = false
-		}, timer)
+	}, timer)
 end
 
 local step = {}
